@@ -48,6 +48,11 @@ jobs:
         run: npm ci
       - name: Build app
         run: npm run build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: dist
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
