@@ -49,9 +49,11 @@ jobs:
       - name: Build app
         run: npm run build
   report:
+    needs: [lint,build]
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |
           echo "Something went wrong"
-          echo "${{ github}}"
+          echo "${{ github }}"
